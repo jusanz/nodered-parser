@@ -1,0 +1,36 @@
+services:
+  node-red:
+    image: nodered/node-red:3.1.0-18-minimal
+    environment:
+      TZ: ${TZ}
+    ports:
+      - ${NODERED_PORT}:1880
+    networks:
+      - node-red-net
+    volumes:
+      - ./node-red-data:/data
+
+  parser:
+    build: ./parser
+    volumes:
+      - ./parser:/usr/src/app
+      - ./node-red-data:/tmp/node-red-data
+    environment:
+      TZ: ${TZ}
+    ports:
+      - ${PARSER_PORT}:8080
+
+  remix-app:
+    build:
+      context: ./remix-app
+      target: "development"
+    ports:
+      - ${REMIX_PORT}:3000
+      - ${REMIX_WS_PORT}:3001
+    volumes:
+      - ./remix-app/app:/usr/server/app
+    environment:
+      TZ: Asia/Tokyo
+
+networks:
+  node-red-net:
