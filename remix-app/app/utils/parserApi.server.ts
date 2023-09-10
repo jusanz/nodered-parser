@@ -1,5 +1,5 @@
-export const flowsJsonText = async () => {
-  const response = await fetch("http://parser:8080/flows-json-text", {
+export const get = async (url: string) => {
+  const response = await fetch(url, {
     method: "GET",
   });
   const text = await response.text();
