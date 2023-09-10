@@ -1,10 +1,10 @@
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 
-import { flowsJsonText } from "~/utils/parserApi.server";
+import { get } from "~/utils/parserApi.server";
 
 export const loader = async () => {
-  const flows = await flowsJsonText();
+  const flows = await get("http://parser:8080/flows-json-text");
   return json({ flows });
 };
 
