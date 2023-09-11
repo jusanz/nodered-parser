@@ -1,6 +1,6 @@
 import { LoaderArgs } from "@remix-run/node";
 import { json } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData, useParams } from "@remix-run/react";
 import { useState, useEffect } from "react";
 
 import Table from "~/components/Table";
@@ -40,6 +40,7 @@ export const loader = async ({ request, params }: LoaderArgs) => {
 export default function Nodes() {
   const [nodes, setNodes] = useState<Node[]>([]);
   const data = useLoaderData<typeof loader>();
+  const params = useParams();
 
   useEffect(() => {
     const nodes = data.nodes.map((node) => {
@@ -52,7 +53,9 @@ export default function Nodes() {
   return (
     <div className="w-full px-10 py-10">
       <div className="flex justify-center">
-        <h1 className="text-xl tracking-normal font-semibold">Nodes</h1>
+        <h1 className="text-xl tracking-normal font-semibold">
+          Upstream Nodes of {params.nodeId}
+        </h1>
       </div>
       {Table({ nodes })}
     </div>
