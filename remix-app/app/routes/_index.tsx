@@ -12,10 +12,10 @@ export default function Index() {
   return (
     <div className="w-full">
       <Link
-        to="/show-json"
+        to="/Nodes"
         className="bg-blue-500 hover:bg-blue-700 text-white fond-bold py-2 px-4 rounded"
       >
-        Show flows.json
+        All Nodes
       </Link>
     </div>
   );
