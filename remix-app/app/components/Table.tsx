@@ -146,65 +146,67 @@ export default function Table({ nodes }: { nodes: Node[] }) {
           </div>
         )}
 
-        <table className="w-full text-sm text-left text-gray-500 min-h-screen">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50">
-            <tr>
-              <th scope="col" className="px-6 py-3">
-                {TableHeading({
-                  title: "ID",
-                })}
-              </th>
-              <th scope="col" className="px-6 py-3">
-                {TableHeading({
-                  title: "Type",
-                })}
-              </th>
-              <th scope="col" className="px-6 py-3">
-                {TableHeading({ title: "Tab" })}
-              </th>
-              <th scope="col" className="px-6 py-3">
-                {TableHeading({ title: "Name" })}
-              </th>
-              <th scope="col" className="px-6 py-3">
-                <span className="sr-only">Downstream Nodes</span>
-              </th>
-              <th scope="col" className="px-6 py-3">
-                <span className="sr-only">Upstream Nodes</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {_nodes.map((node: Node) => (
-              <tr className="bg-white border-b" key={node.id}>
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                >
-                  {node.id}
+        <div className="min-h-screen">
+          <table className="w-full text-sm text-left text-gray-500">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+              <tr>
+                <th scope="col" className="px-6 py-3">
+                  {TableHeading({
+                    title: "ID",
+                  })}
                 </th>
-                <td className="px-6 py-4">{node.type}</td>
-                <td className="px-6 py-4">{node.tab}</td>
-                <td className="px-6 py-4">{node.name}</td>
-                <td className="items-center px-6 py-4 space-x-3">
-                  <Link
-                    to={`/nodes/${node.id}/downstream-nodes`}
-                    className="font-medium text-blue-600 hover:underline"
-                  >
-                    Downstream Nodes
-                  </Link>
-                </td>
-                <td className="items-center px-6 py-4 space-x-3">
-                  <Link
-                    to={`/nodes/${node.id}/upstream-nodes`}
-                    className="font-medium text-blue-600 hover:underline"
-                  >
-                    Upstream Nodes
-                  </Link>
-                </td>
+                <th scope="col" className="px-6 py-3">
+                  {TableHeading({
+                    title: "Type",
+                  })}
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  {TableHeading({ title: "Tab" })}
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  {TableHeading({ title: "Name" })}
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  <span className="sr-only">Downstream Nodes</span>
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  <span className="sr-only">Upstream Nodes</span>
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {_nodes.map((node: Node) => (
+                <tr className="bg-white border-b" key={node.id}>
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                  >
+                    {node.id}
+                  </th>
+                  <td className="px-6 py-4">{node.type}</td>
+                  <td className="px-6 py-4">{node.tab}</td>
+                  <td className="px-6 py-4">{node.name}</td>
+                  <td className="items-center px-6 py-4 space-x-3">
+                    <Link
+                      to={`/nodes/${node.id}/downstream-nodes`}
+                      className="font-medium text-blue-600 hover:underline"
+                    >
+                      Downstream Nodes
+                    </Link>
+                  </td>
+                  <td className="items-center px-6 py-4 space-x-3">
+                    <Link
+                      to={`/nodes/${node.id}/upstream-nodes`}
+                      className="font-medium text-blue-600 hover:underline"
+                    >
+                      Upstream Nodes
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
