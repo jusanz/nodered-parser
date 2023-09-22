@@ -9,6 +9,10 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
+import type { LoaderArgs } from "@remix-run/node";
+import { json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+
 import { Header } from "~/components/Header";
 
 import tailwindStylesheet from "~/tailwind.css";
@@ -18,9 +22,15 @@ export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
 ];
 
+export const loader = async ({}: LoaderArgs) => {
+  const language = process.env.LANGUAGE ?? "en";
+  return json({ language });
+};
+
 export default function App() {
+  const data = useLoaderData<typeof loader>();
   return (
-    <html lang="en">
+    <html lang={data?.language}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
