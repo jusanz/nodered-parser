@@ -31,6 +31,7 @@ services:
       - ./remix-app/app:/usr/server/app
     environment:
       TZ: Asia/Tokyo
+      LANGUAGE: ${LANGUAGE}
 
 networks:
   node-red-net:
