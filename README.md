@@ -1,6 +1,6 @@
 # Node-RED Parser
 
-It is a tool to organize nodes that make up Node-RED. The backend runs on Go.
+This is a tool to organize nodes that make up Node-RED. The backend runs on Go.
 
 ## Experimantal Project
 
